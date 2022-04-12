@@ -1,7 +1,7 @@
 Summary:        Package manager
 Name:           rpm
 Version:        4.17.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 License:        GPLv2+ AND LGPLv2+ AND BSD
 Vendor:         Microsoft Corporation
 Distribution:   Mariner
@@ -74,10 +74,13 @@ Requires:       %{name}-build-libs
 Requires:       %{name}-devel = %{version}-%{release}
 Requires:       bzip2
 Requires:       cpio
+Requires:       diffutils
 Requires:       elfutils-devel
 Requires:       elfutils-libelf
+Requires:       file
 Requires:       gzip
 Requires:       mariner-rpm-macros
+Requires:       patch
 Requires:       tar
 Requires:       unzip
 Requires:       xz
@@ -270,6 +273,9 @@ popd
 %{python3_sitelib}/*
 
 %changelog
+* Tue Apr 12 2022 Andy Caldwell <andycaldwell@microsoft.com> - 4.17.0-6
+- Add missing dependencies to rpmbuild (file, diff and patch)
+
 * Thu Apr 21 2022 Daniel McIlvaney <damcilva@microsoft.com> - 4.17.0-5
 - rpm-libs needs to run in container environments without systemd, audit was being
 -   pulled in as an automatic dependency. Explicitly disable the audit config.
