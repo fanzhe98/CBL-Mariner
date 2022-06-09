@@ -1,13 +1,11 @@
 [Unit]
 Description=Load Iptables Rules
 ConditionFileIsExecutable=/etc/systemd/scripts/iptables
-After=network.target
 
 [Service]
-Type=forking
+Type=oneshot
 ExecStart=/etc/systemd/scripts/iptables
 ExecStop=/etc/systemd/scripts/iptables.stop
-TimeoutSec=0
 RemainAfterExit=yes
 
 [Install]
